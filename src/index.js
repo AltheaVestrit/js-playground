@@ -17,19 +17,23 @@ import myModule from './myModule.js';
 // import css:
 import './styles.css';
 
+const dropdowns = document.querySelectorAll(".dropdown");
+dropdowns.forEach(dropdown => {
+    const dropdownContent = dropdown.querySelector(".dropdown-content");
+    const dropBtn = dropdown.querySelector(".dropbtn");
+    const dropArrow = dropdown.querySelector(".drop-arrow");
 
-const dropdownContent = document.querySelector(".dropdown-content");
-const dropBtn = document.querySelector(".dropbtn");
-const dropArrow = document.querySelector(".drop-arrow");
-
-dropBtn.addEventListener("click", e => {
-    if (dropBtn.dataset.active === "true") {
-        dropBtn.dataset.active = "false";
-        dropdownContent.classList.add("hidden");
-        dropArrow.innerText = ">";
-    } else {
-        dropBtn.dataset.active = "true";
-        dropdownContent.classList.remove("hidden");
-        dropArrow.innerText = "v";
-    }
+    dropBtn.addEventListener("click", e => {
+        if (dropBtn.dataset.active === "true") {
+            dropBtn.dataset.active = "false";
+            dropdownContent.classList.add("hidden");
+            dropArrow.innerText = ">";
+        } else {
+            dropBtn.dataset.active = "true";
+            dropdownContent.classList.remove("hidden");
+            dropArrow.innerText = "v";
+        }
+    });
 })
+
+
