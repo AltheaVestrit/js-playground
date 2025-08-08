@@ -7,20 +7,10 @@
   </head>
 
   <body>
-    <div class="dropdown">
-      <button class="dropbtn" data-active="false">
-        <p class="drop-text">Dropdown</p>
-        <p class="drop-arrow">></p>
-      </button>
-      <div class="dropdown-content hidden">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-      </div>
-    </div>
 
-    <div class="dropdown">
-        <button class="dropbtn" data-active="false">
+    <nav>
+      <div class="dropdown">
+        <button class="btn dropdown__btn" data-active="false">
           <p class="drop-text">Dropdown</p>
           <p class="drop-arrow">></p>
         </button>
@@ -30,5 +20,54 @@
           <a href="#">Link 3</a>
         </div>
       </div>
+      <div class="dropdown">
+          <button class="btn dropdown__btn" data-active="false">
+            <p class="drop-text">Dropdown</p>
+            <p class="drop-arrow">></p>
+          </button>
+          <div class="dropdown-content hidden">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
+    </nav>
+
+    <section class="carousel">
+      <div class="carousel__content">
+        <button class="carousel__btn btn left">&lt;</button>
+        <div class="carousel__frame">
+          <div class="carousel__photos" data-nr="1">
+            <img src="./img/picture01.jpg" alt="" data-nr="1">
+            <img src="./img/picture02.jpg" alt="" data-nr="2">
+            <img src="./img/picture03.jpg" alt="" data-nr="3">
+            <img src="./img/picture04.jpg" alt="" data-nr="4">
+            <img src="./img/picture05.jpg" alt="" data-nr="5">
+            <img src="./img/picture06.jpg" alt="" data-nr="6">
+          </div>
+        </div>
+        <button class="carousel__btn btn right">&gt;</button>
+      </div>
+      <div class="carousel__nav"></button></div>
+    </section>
+
+    <section class="carousel">
+      <div class="carousel__content">
+        <button class="carousel__btn btn left">&lt;</button>
+        <div class="carousel__frame">
+          <div class="carousel__photos" data-nr="1">
+            <img src="./img/picture01.jpg" alt="" data-nr="1">
+            <img src="./img/picture02.jpg" alt="" data-nr="2">
+            <img src="./img/picture03.jpg" alt="" data-nr="3">
+            <img src="./img/picture04.jpg" alt="" data-nr="4">
+            <img src="./img/picture05.jpg" alt="" data-nr="5">
+            <img src="./img/picture06.jpg" alt="" data-nr="6">
+          </div>
+        </div>
+        <button class="carousel__btn btn right">&gt;</button>
+      </div>
+      <div class="carousel__nav"></button></div>
+    </section>
+
   </body>
 </html>

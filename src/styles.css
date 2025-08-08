@@ -12,46 +12,58 @@
     --text-secondary: #757575;
     /* Border and hover color */
     --highlight: #00aef2;
+    /* Nav circles for carousel */
+    --nav: #e6e6e6;
+    /* fonts */
     font-size: large;
 }
 
 body {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
     background-color: var(--background);
     padding-top: 2%;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.dropbtn {
+nav {
+    display: flex;
+    gap: 3em;
+}
+
+.btn {
     font-size: 1rem;
     padding: 0.5em 1em;
-    margin-bottom: 1em;
-    min-width: 30ch;
     display: flex;
     justify-content: space-between;
-    border-radius: 5px;
+    align-items: center;
+    border-radius: 0.5rem;
     border: 2px solid var(--highlight);
     background-color: white;
-}
-
-.dropbtn:hover {
-    cursor: pointer;
-}
-
-.drop-text,
-.drop-arrow {
     color: var(--text-primary);
     font-weight: bold;
 }
 
+.dropdown__btn {
+    width: 15rem;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
 .dropdown-content {
-    display: flex;
-    flex-direction: column;
+    margin-top: 0.5em;
+    display: block;
     background-color: white;
     border-radius: 5px;
-    overflow: hidden;
+    overflow: hidden; /* to deal with highlighting of the links */
+    position: absolute; /* take dropdown out of document flow */
+    width: 15rem; /* make dropdown same width as button */
+    box-shadow: 5px 5px 5px rgba(0,0,0,30%);
+    z-index: 100;
 }
 
 .dropdown-content a {
@@ -59,14 +71,64 @@ body {
     color: var(--text-secondary);
     padding-left: 1em;
     line-height: 3em;
+    display: block; /* make links have width of 100% */
 }
 
 .dropdown-content a:hover {
     color: white;
     background-color: var(--highlight);
-
 }
 
 .hidden {
     display: none;
+}
+
+.carousel__content {
+    display: flex;
+    gap: 1rem;
+    align-items: stretch;
+    margin-bottom: 0.3em;
+}
+
+.carousel__frame {
+    height:300px;
+    width: 200px;
+    border: 2px solid var(--highlight);
+    border-radius: 0.5rem;
+    background-color: white;
+    overflow: hidden;
+}
+
+.carousel__photos {
+    position: relative; /* get the freedom to change the position of the row of photos */
+    right: 0px; /* to go to next photo, add 200px */
+    display: flex;
+}
+
+/* .carousel__btn {
+    z-index: 1;
+} */
+
+.carousel__nav {
+    /* border: 2px solid black; */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.circle {
+    width: 15px;
+    height: 15px;
+    border: 1px solid var(--nav);
+    border-radius: 100px;
+    background-color: white;
+}
+
+.circle:hover {
+    background-color: var(--text-secondary);
+}
+
+.circle.selected {
+    background-color: var(--highlight);
 }
