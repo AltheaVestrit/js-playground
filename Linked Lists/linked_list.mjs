@@ -1,9 +1,14 @@
-class LinkedList {
+export class LinkedList {
   // Make HEAD private value, so it can only be accessed from within the object
   #HEAD = null;
 
+  // Node factory
+  Node(value = null) {
+    return { value, nextNode: null };
+  }
+
   append(value) {
-    let newNode = new Node(value);
+    let newNode = this.Node(value);
     // if #HEAD == null (linked list is empty) set newNode as first node (#HEAD = newNode)
     if (this.#HEAD === null) {
       this.#HEAD = newNode;
@@ -19,7 +24,7 @@ class LinkedList {
     return newNode;
   }
   prepend(value) {
-    let newNode = new Node(value);
+    let newNode = this.Node(value);
     if (this.#HEAD === null) {
       this.#HEAD = newNode;
       return newNode;
@@ -69,6 +74,81 @@ class LinkedList {
     }
     return pointer.value;
   }
+  pop() {
+    if (this.#HEAD === null) {
+      return null;
+    }
+    let pointer = this.#HEAD;
+    let prev = null;
+    while (pointer.nextNode !== null) {
+      prev = pointer;
+      pointer = pointer.nextNode;
+    }
+    prev.nextNode = null;
+  }
+  contains(value) {
+    let pointer = this.#HEAD;
+    while (pointer !== null) {
+      if (pointer.value === value) {
+        return true;
+      }
+      pointer = pointer.nextNode;
+    }
+    return false;
+  }
+  find(value) {
+    let pointer = this.#HEAD;
+    let i = 1;
+    while (pointer !== null) {
+      if (pointer.value === value) {
+        return i;
+      }
+      pointer = pointer.nextNode;
+      i++;
+    }
+    return null;
+  }
+  insertAt(value, index) {
+    if (index === 1 || this.#HEAD === null) {
+      return this.prepend(value);
+    }
+    let pointer = this.#HEAD;
+    let prev = null;
+    let i = 1;
+    while (i < index) {
+      if (pointer === null) {
+        return this.append(value);
+      }
+      prev = pointer;
+      pointer = pointer.nextNode;
+      i++;
+    }
+    let newNode = this.Node(value);
+    newNode.nextNode = pointer;
+    prev.nextNode = newNode;
+    return newNode;
+  }
+  removeAt(index) {
+    if (this.#HEAD === null) {
+      return null;
+    }
+    let pointer = this.#HEAD;
+    let prev = null;
+    if (index === 1) {
+      this.#HEAD = this.#HEAD.nextNode;
+      return pointer;
+    }
+    let i = 1;
+    while (i < index) {
+      if (pointer === null) {
+        return null;
+      }
+      prev = pointer;
+      pointer = pointer.nextNode;
+      i++;
+    }
+    prev.nextNode = pointer.nextNode;
+  }
   toString() {
     if (this.#HEAD === null) {
       console.log("null");
@@ -83,24 +163,3 @@ class LinkedList {
     return str;
   }
 }
-
-class Node {
-  constructor(value = null) {
-    this.value = value;
-    this.nextNode = null;
-  }
-}
-
-const list = new LinkedList();
-list.append("dog");
-list.append("cat");
-list.append("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
-// list.prepend("test");
-console.log(list.toString());
-// console.log(list.size());
-// console.log(list.head());
-// console.log(list.tail());
-// console.log(list.at(6));
