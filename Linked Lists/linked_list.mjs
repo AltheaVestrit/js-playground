@@ -1,14 +1,17 @@
+// Node factory
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.nextNode = null;
+  }
+}
+
 export class LinkedList {
   // Make HEAD private value, so it can only be accessed from within the object
   #HEAD = null;
 
-  // Node factory
-  Node(value = null) {
-    return { value, nextNode: null };
-  }
-
   append(value) {
-    let newNode = this.Node(value);
+    let newNode = new Node(value);
     // if #HEAD == null (linked list is empty) set newNode as first node (#HEAD = newNode)
     if (this.#HEAD === null) {
       this.#HEAD = newNode;
@@ -24,7 +27,7 @@ export class LinkedList {
     return newNode;
   }
   prepend(value) {
-    let newNode = this.Node(value);
+    let newNode = new Node(value);
     if (this.#HEAD === null) {
       this.#HEAD = newNode;
       return newNode;
@@ -123,7 +126,7 @@ export class LinkedList {
       pointer = pointer.nextNode;
       i++;
     }
-    let newNode = this.Node(value);
+    let newNode = new Node(value);
     newNode.nextNode = pointer;
     prev.nextNode = newNode;
     return newNode;
